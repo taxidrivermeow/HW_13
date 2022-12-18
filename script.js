@@ -19,14 +19,10 @@ function isNumber(num) {
 }
 
 function calc() {
-    if (firstValue.value === '' || secondValue.value === '') {
-        alert('NaN');
-        return;
-    }
-    const firstNum = +firstValue.value;
-    const secondNum = +secondValue.value;
+    if (isNumber(firstValue.value) && isNumber(secondValue.value)) {
+        const firstNum = +firstValue.value;
+        const secondNum = +secondValue.value;
 
-    if (isNumber(firstNum) && isNumber(secondNum)) {
         switch (operator.value) {
             case '+':
                 resCalc.textContent = (firstNum + secondNum);
@@ -47,14 +43,15 @@ function calc() {
             default:
                 break;
         }
+    } else {
+        alert('NaN');
     }
 }
 
 function addItem() {
     let arrSum = 0;
-    const additionalNum = +itemInput.value;
-
-    if (additionalNum) {
+    if (isNumber(itemInput.value)) {
+        const additionalNum = +itemInput.value;
         addNumArr.push(additionalNum);
 
         for (const addNumArrElement of addNumArr) {
